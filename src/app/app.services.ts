@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 // Appel des routes de l'API
 @Injectable()
 export class AppService {
-    baseUrl = 'http://localhost:8086/';
+    baseUrl = 'http://localhost:8086';
 
     constructor(private http: Http) { }
 

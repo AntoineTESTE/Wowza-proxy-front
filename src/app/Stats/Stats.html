@@ -1,3 +1,10 @@
-<ul *ngFor="let stat of stats" (click)="getStats()">
-  <li> {{ stat }} </li>
+<button (click)="getStats()">Stats</button>
+
+
+<ul>
+  <li *ngFor="let stat of stats">
+    ID : {{stat._id}} <br> Nom : {{stat.name}} <br> Heure de chargement : {{stat.uploadedAt}} <br> Durée de chargement :
+    {{stat.uploadDuration}}
+    <br> Durée de chargement : {{stat.uploadDuration}} <br> Etat : {{stat.status}}
+  </li>
 </ul>
