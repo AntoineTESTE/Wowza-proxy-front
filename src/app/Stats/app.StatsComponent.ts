@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AppService } from 'app/app.services';
+import { Pipe, PipeTransform } from '@angular/core';
+
 
 interface Stats {
   id: string;
@@ -35,4 +37,23 @@ export class StatsComponent {
       (err) => console.error(err) // sinon erreur
       );
   }
+}
+
+
+
+
+@Pipe({
+  name: 'filter'
+})
+export class FilterPipe implements PipeTransform {
+
+  transform(stats: any, query?: any): any {
+
+    if (query === undefined) return stats;
+
+    return stats.filter(function (stat) {
+      return stat.name.toLowerCase().includes(query.toLowerCase())
+    })
+  }
+
 }

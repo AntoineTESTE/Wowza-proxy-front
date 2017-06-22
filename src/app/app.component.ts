@@ -4,7 +4,6 @@ import { AppService } from './app.services';
 
 
 
-
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -13,9 +12,6 @@ import { AppService } from './app.services';
 })
 
 export class AppComponent {
-
-
-
 
     // constructeur des services de l'API
     constructor(

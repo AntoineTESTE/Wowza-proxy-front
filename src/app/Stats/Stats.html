@@ -1,8 +1,9 @@
-<button (click)="getStats()">Stats</button>
+<button (click)="getStats()">Get Stats</button><br> Filtre
+<input type="text" [(ngModel)]="query" placeholder="search by name" />
 
 
 <ul>
-  <li *ngFor="let stat of stats">
+  <li *ngFor="let stat of stats| filter:query">
     ID : {{stat._id}} <br> Nom : {{stat.name}} <br> Heure de chargement : {{stat.uploadedAt}} <br> Durée de chargement :
     {{stat.uploadDuration}}
     <br> Durée de chargement : {{stat.uploadDuration}} <br> Etat : {{stat.status}}

@@ -18,7 +18,6 @@ export class AppService {
         return this.http.get(`${this.baseUrl}/videos/stats`)
             .map(this.extractData); // si quelque chose est attendu en retour de la méthode appelé par la route
     }
-
     //Conversion Http ->json
     private extractData(res: Response) {
         return res.json();
