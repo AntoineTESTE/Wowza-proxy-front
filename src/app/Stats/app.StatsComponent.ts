@@ -15,6 +15,7 @@ interface Stats {
 @Component({
   selector: 'stats',
   templateUrl: './Stats.html',
+  styleUrls: ['./Stats.css'],
   providers: [AppService],
 })
 

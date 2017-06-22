@@ -1,0 +1,36 @@
+table th {
+ text-align: center;
+}
+
+table {
+  color: red;
+}
+
+.Id {
+  width: 20%;
+}
+
+.Name {
+    width: 20%;
+}
+
+.Time {
+    width: 20%;
+}
+
+.Duration {
+    width: 20%;
+}
+
+.State {
+    width: 20%;
+}
+
+td {
+  text-align: center;
+}
+
+.searcharea {
+ float :right;
+ width : 1000px;
+}
