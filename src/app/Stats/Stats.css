@@ -2,28 +2,25 @@ table th {
  text-align: center;
 }
 
-table {
-  color: red;
-}
-
-.Id {
-  width: 20%;
-}
 
 .Name {
     width: 20%;
+    vertical-align: middle;
 }
 
 .Time {
     width: 20%;
+    vertical-align: middle;
 }
 
 .Duration {
     width: 20%;
+    vertical-align: middle;
 }
 
 .State {
     width: 20%;
+    vertical-align: middle;
 }
 
 td {
@@ -31,6 +28,11 @@ td {
 }
 
 .searcharea {
- float :right;
- width : 1000px;
+  margin: 20px;
+  color: blue;
+}
+
+.order {
+    float: right;
+    color : blue
 }

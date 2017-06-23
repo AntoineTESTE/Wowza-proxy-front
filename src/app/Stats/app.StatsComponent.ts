@@ -1,29 +1,36 @@
 import { Component } from '@angular/core';
 import { AppService } from 'app/app.services';
 import { Pipe, PipeTransform } from '@angular/core';
+import * as _ from "lodash";
 
 
+// Implémentation de l'interface de Stats avec ses attributs
 interface Stats {
-  id: string;
-  name: string;
+  id: String;
+  name: String;
   uploadedAt: Date;
   uploadDuration: Number;
-  status: string
+  status: String
+  url: String
 }
 
-
+// Creation du composant 
 @Component({
-  selector: 'stats',
-  templateUrl: './Stats.html',
-  styleUrls: ['./Stats.css'],
-  providers: [AppService],
+  selector: 'stats', // selecteur
+  templateUrl: './Stats.html', // HTML
+  styleUrls: ['./Stats.css'], // CSS
+  providers: [AppService], // Service associés
 })
 
 
 export class StatsComponent {
 
-  stats: Stats;
-  // constructeur des services de l'API
+  // attributs exortés
+
+  stats: Array<Stats>; // tableau de stats
+  isAscending: Boolean; // variable de tri défini
+
+  // construction des services de l'API
   constructor(
     private appService: AppService
   ) { }
@@ -31,21 +38,28 @@ export class StatsComponent {
 
   // Fonction de stats
 
-  getStats() {
+  ngOnInit() {
     this.appService.findStats() // le fonction Find est appelé
       .subscribe( // souscription 
       (stats) => this.stats = stats, // retour = stats
       (err) => console.error(err) // sinon erreur
       );
+
+  }
+
+  // Fonction de tri
+
+  sortByDate() {
+    this.isAscending = !this.isAscending;
+    this.stats = _.orderBy(this.stats, 'uploadedAt', this.isAscending ? 'asc' : 'desc');
+
   }
 }
-
-
-
-
+// Search bar
 @Pipe({
   name: 'filter'
 })
+
 export class FilterPipe implements PipeTransform {
 
   transform(stats: any, query?: any): any {
@@ -58,3 +72,6 @@ export class FilterPipe implements PipeTransform {
   }
 
 }
+
+
+
