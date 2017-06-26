@@ -1,23 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { StatsComponent } from './Stats/app.StatsComponent';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
-import { FilterPipe } from './Stats/app.StatsComponent';
 import { FormsModule } from '@angular/forms';
-
-
+import { StatsModule } from './stats/stats.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    StatsComponent,
-    FilterPipe
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule,
-    FormsModule
+    StatsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

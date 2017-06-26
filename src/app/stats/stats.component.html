@@ -3,15 +3,13 @@
     type="text" [(ngModel)]="query" placeholder="search by name" />
 </div>
 
-
-
 <table class="table table-striped table-bordered table-hover table-sm">
   <thead class="thead-inverse">
     <tr>
       <th class="Name">Nom</th>
-      <th class="Time">Heure de chargement<button class="order btn btn-secondary" (click)="sortByDate()">&#8597;</button>
+      <th class="Time">Heure d'upload<button class="order btn btn-secondary" (click)="sortByDate()">&#8597;</button>
       </th>
-      <th class="Duration">Durée de chargement</th>
+      <th class="Duration">Durée d'upload</th>
       <th class="State">Etat</th>
     </tr>
   </thead>
@@ -22,6 +20,4 @@
     <td>{{stat.uploadDuration | date:'ss'}} seconds</td>
     <td>{{stat.status}}</td>
   </tr>
-
-
 </table>
