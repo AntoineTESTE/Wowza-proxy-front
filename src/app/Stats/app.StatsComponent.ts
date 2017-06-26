@@ -44,8 +44,9 @@ export class StatsComponent {
       (stats) => this.stats = stats, // retour = stats
       (err) => console.error(err) // sinon erreur
       );
-
   }
+
+
 
   // Fonction de tri
 
