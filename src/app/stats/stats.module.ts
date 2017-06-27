@@ -4,9 +4,6 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { StatsComponent } from './stats.component';
 import { FilterPipe } from './stats.filter.pipe';
-import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
-
-const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
 
 @NgModule({
   declarations: [
@@ -16,8 +13,7 @@ const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule,
-    SocketIoModule.forRoot(config)
+    FormsModule
   ],
   exports: [
     StatsComponent

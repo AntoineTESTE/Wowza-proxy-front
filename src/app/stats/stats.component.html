@@ -11,6 +11,7 @@
       </th>
       <th class="Duration">Durée d'upload</th>
       <th class="State">Etat</th>
+      <th class="Progress">Avancée</th>
     </tr>
   </thead>
 
@@ -19,5 +20,6 @@
     <td>{{stat.uploadedAt | date:'dd/MM/y H:mm:ss'}}</td>
     <td>{{stat.uploadDuration | date:'ss'}} seconds</td>
     <td>{{stat.status}}</td>
+    <td>{{stat.progress ? stat.progress + '%' : ''}}</td>
   </tr>
 </table>

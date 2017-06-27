@@ -9,6 +9,7 @@ interface Stats {
   uploadedAt: Date;
   uploadDuration: Number;
   status: String;
+  progress: String;
   url: String;
 }
 
@@ -24,9 +25,22 @@ export class StatsComponent {
   stats: Array<Stats>; // tableau de stats
   isAscending: Boolean; // variable de tri défini
   handlers = {
-    progress({ _id, progress }) {
-      const stat = _.find(this.stats, { _id });
-      (<Stats>stat).status = `${progress}%`;
+    progress(video) {
+      let videoStats = _.find(this.stats, { _id: video._id });
+      if(!videoStats) {
+        this.stats.push(video);
+        this.isAscending = false;
+        return this.sortByDate();
+      }
+      (<Stats>videoStats).progress = video.progress;
+    },
+
+    response(video) {
+      _.forEach(this.stats, (stat, i) => {
+        if(stat._id === video._id) {
+          this.stats[i] = video;
+        }
+      });
     },
 
     stats(stats) {

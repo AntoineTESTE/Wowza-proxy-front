@@ -25,15 +25,18 @@ export class StatsService {
 
   initWebsocketHandlers(client) {
     client.request('/videos/stats', (err, payload) => {
+      console.log('stats', payload);
        this.eventCallback.next(['stats', payload]);
     });
-    client.subscribe('/videos/progress', (status, flags) => {
-      if(status.isTrusted) {
-        status = JSON.parse(status.data).message;
+    client.subscribe('/videos/progress', (video, flags) => {
+      if(video.isTrusted) {
+        video = JSON.parse(video.data).message;
       }
-      this.eventCallback.next(['progress', status]);
-    }, (err) => {
+      this.eventCallback.next(['progress', video]);
+    }, (err) => {});
 
-    });
+    client.subscribe('/videos/response', (video, flags) => {
+      this.eventCallback.next(['response', video]);
+    }, (err) => {});
   }
 }
