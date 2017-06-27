@@ -20,14 +20,16 @@ interface Stats {
   styleUrls: ['./stats.component.css'], // CSS
   providers: [StatsService], // Service associés
 })
+
 export class StatsComponent {
-  // attributs exortés
+  // attributs exportés
   stats: Array<Stats>; // tableau de stats
   isAscending: Boolean; // variable de tri défini
-  handlers = {
+  handlers = { // un handler faisant appel a des fonctions
+    //Progress
     progress(video) {
       let videoStats = _.find(this.stats, { _id: video._id });
-      if(!videoStats) {
+      if (!videoStats) {
         this.stats.push(video);
         this.isAscending = false;
         return this.sortByDate();
@@ -35,14 +37,16 @@ export class StatsComponent {
       (<Stats>videoStats).progress = video.progress;
     },
 
+    // Response
     response(video) {
       _.forEach(this.stats, (stat, i) => {
-        if(stat._id === video._id) {
+        if (stat._id === video._id) {
           this.stats[i] = video;
         }
       });
     },
 
+    // Stats
     stats(stats) {
       this.stats = stats;
       this.sortByDate();
