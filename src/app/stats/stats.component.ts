@@ -22,6 +22,7 @@ interface Stats {
 })
 
 export class StatsComponent {
+
   // attributs exportés
   stats: Array<Stats>; // tableau de stats
   isAscending: Boolean; // variable de tri défini
@@ -75,6 +76,7 @@ export class StatsComponent {
     this.isAscending = !this.isAscending;
     this.stats = _.orderBy(this.stats, 'uploadedAt', this.isAscending ? 'desc' : 'asc');
   }
+
 }
 
 

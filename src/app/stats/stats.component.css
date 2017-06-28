@@ -40,3 +40,18 @@ td {
     float: right;
     color : blue
 }
+
+.uploading {
+    color: red;
+    font-weight: bold;
+}
+
+.uploaded {
+    color: green;
+    font-weight: bold;
+}
+
+.calculating {
+    font-weight: bold;
+}
+

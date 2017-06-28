@@ -18,8 +18,8 @@
   <tr *ngFor="let stat of stats| filter:query">
     <td><a href="{{stat.url}}">{{stat.name}}</a></td>
     <td>{{stat.uploadedAt | date:'dd/MM/y H:mm:ss'}}</td>
-    <td>{{stat.uploadDuration | date:'ss'}} seconds</td>
-    <td>{{stat.status}}</td>
+    <td [ngClass]="{'calculating': !stat.uploadDuration, 'calculated':stat.uploadDuration}">{{stat.uploadDuration ? (stat.uploadDuration | date:'ss') + ' seconds' : 'Calculating...'}}</td>
+    <td [ngClass]="{'uploading': stat.status=='UPLOADING', 'uploaded':stat.status=='UPLOADED'}">{{stat.status}}</td>
     <td>{{stat.progress ? stat.progress + '%' : ''}}</td>
   </tr>
 </table>
