@@ -25,7 +25,7 @@ export class StatsComponent {
   // attributs exportés
   stats: Array<Stats>; // tableau de stats
   isAscending: Boolean; // variable de tri défini
-  handlers = { // un handler faisant appel a des fonctions
+  handlers = { // un handler composé de fonctions
     //Progress
     progress(video) {
       let videoStats = _.find(this.stats, { _id: video._id });
@@ -63,6 +63,7 @@ export class StatsComponent {
     this.initEvents();
   }
 
+  // Initialisation des events
   initEvents() {
     this.statsService.eventCallback$.subscribe(([event, payload]) => {
       this.handlers[event].call(this, payload);

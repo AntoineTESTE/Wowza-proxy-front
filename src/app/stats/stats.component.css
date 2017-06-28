@@ -2,7 +2,6 @@ table th {
  text-align: center;
 }
 
-
 .Name {
     width: 20%;
     vertical-align: middle;
@@ -19,6 +18,11 @@ table th {
 }
 
 .State {
+    width: 20%;
+    vertical-align: middle;
+}
+
+.Progress {
     width: 20%;
     vertical-align: middle;
 }

@@ -30,7 +30,7 @@ export class StatsService {
     });
 
     ['progress', 'response'].forEach((event) => { // tableau d'events "progress", "response"
-      client.subscribe(`/videos/${event}`, (video, flags) => { // Reception des evenements
+      client.subscribe(`/videos/${event}`, (video, flags) => { // Inscription pour la reception des evenements
         if (video.isTrusted) {
           video = JSON.parse(video.data).message;
         }
