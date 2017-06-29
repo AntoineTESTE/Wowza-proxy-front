@@ -19,7 +19,7 @@
     <td><a href="{{stat.url}}">{{stat.name}}</a></td>
     <td>{{stat.uploadedAt | date:'dd/MM/y H:mm:ss'}}</td>
     <td>{{ stat.uploadDuration | countdown: 'milliseconds' }}</td>
-    <td [ngClass]="{'uploading': stat.status=='UPLOADING', 'uploaded':stat.status=='UPLOADED'}">{{ stat.progress }}%</td>
+    <td [ngStyle]="progressColor(stat.progress)">{{ stat.progress }}%</td>
     <td *ngIf="stat.status === 'UPLOADED'">-</td>
     <td *ngIf="stat.status !== 'UPLOADED'">{{ stat.remain | countdown: 'milliseconds' }}</td>
   </tr>

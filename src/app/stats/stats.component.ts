@@ -96,6 +96,16 @@ export class StatsComponent {
     const interval = _.now() - +new Date(video.uploadedAt);
     return ((video.fileSize / video.uploadedSize) * interval) - interval;
   }
+
+  progressColor(progress) {
+    return {
+      color: `rgb(
+        ${Math.round(255 - (progress / 100) * 255)},
+        ${Math.round((progress / 100) * 255)},
+        0
+      )`
+    };
+  }
 }
 
 
