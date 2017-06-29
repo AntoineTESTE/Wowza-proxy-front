@@ -3,27 +3,32 @@ table th {
 }
 
 .Name {
-    width: 20%;
+    width: auto;
     vertical-align: middle;
 }
 
 .Time {
-    width: 20%;
+    width: auto;
     vertical-align: middle;
 }
 
 .Duration {
-    width: 20%;
+    width: auto;
     vertical-align: middle;
 }
 
 .State {
-    width: 20%;
+    width: auto;
     vertical-align: middle;
 }
 
 .Progress {
-    width: 20%;
+    width: auto;
+    vertical-align: middle;
+}
+
+.Remain {
+    width: auto;
     vertical-align: middle;
 }
 

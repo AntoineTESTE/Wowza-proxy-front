@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { StatsComponent } from './stats.component';
 import { FilterPipe } from './stats.filter.pipe';
+import { MomentModule } from 'angular2-moment';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { FilterPipe } from './stats.filter.pipe';
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    MomentModule
   ],
   exports: [
     StatsComponent

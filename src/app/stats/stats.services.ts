@@ -9,9 +9,10 @@ import * as Nes from 'nes';
 
 // Appel des routes de l'API
 @Injectable()
+
 export class StatsService {
   private eventCallback: Subject<any[]> = new Subject<any>();
-  eventCallback$ = this.eventCallback.asObservable(); // Creation d'une isntance Observable
+  eventCallback$ = this.eventCallback.asObservable(); // Creation d'une instance Observable
 
   constructor(private http: Http) {
     var client = new Nes.Client('ws://localhost:8086'); // Création de la Websocket

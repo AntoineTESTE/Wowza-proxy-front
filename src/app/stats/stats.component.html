@@ -12,6 +12,7 @@
       <th class="Duration">Durée d'upload</th>
       <th class="State">Etat</th>
       <th class="Progress">Avancée</th>
+      <th class="Remain">Restant</th>
     </tr>
   </thead>
 
@@ -20,6 +21,7 @@
     <td>{{stat.uploadedAt | date:'dd/MM/y H:mm:ss'}}</td>
     <td [ngClass]="{'calculating': !stat.uploadDuration, 'calculated':stat.uploadDuration}">{{stat.uploadDuration ? (stat.uploadDuration | date:'ss') + ' seconds' : 'Calculating...'}}</td>
     <td [ngClass]="{'uploading': stat.status=='UPLOADING', 'uploaded':stat.status=='UPLOADED'}">{{stat.status}}</td>
-    <td>{{stat.progress ? stat.progress + '%' : ''}}</td>
+    <td>{{stat.progress ? stat.progress + '%' : 'done'}}</td>
+    <td>{{stat.remain | amDifference }}</td>
   </tr>
 </table>

@@ -9,8 +9,11 @@ interface Stats {
   uploadedAt: Date;
   uploadDuration: Number;
   status: String;
-  progress: String;
+  uploadedSize: Number;
+  fileSize: Number;
   url: String;
+  progress?: Number;
+  remain: Number;
 }
 
 // Creation du composant
@@ -21,6 +24,8 @@ interface Stats {
   providers: [StatsService], // Service associés
 })
 
+
+
 export class StatsComponent {
 
   // attributs exportés
@@ -29,13 +34,20 @@ export class StatsComponent {
   handlers = { // un handler composé de fonctions
     //Progress
     progress(video) {
+
       let videoStats = _.find(this.stats, { _id: video._id });
       if (!videoStats) {
+
+        video.progress = this.getProgress(video);
+        video.remain = this.getEstimateUploaded(video);
+
         this.stats.push(video);
         this.isAscending = false;
         return this.sortByDate();
       }
-      (<Stats>videoStats).progress = video.progress;
+      (<Stats>videoStats).progress = this.getProgress(video);
+      (<Stats>videoStats).remain = this.getEstimateUploaded(video);
+      //console.log(video);
     },
 
     // Response
@@ -53,6 +65,10 @@ export class StatsComponent {
       this.sortByDate();
     }
   };
+
+
+
+
 
   // construction des services de l'API
   constructor(
@@ -77,6 +93,14 @@ export class StatsComponent {
     this.stats = _.orderBy(this.stats, 'uploadedAt', this.isAscending ? 'desc' : 'asc');
   }
 
+  getProgress(video) {
+    return Math.round((video.uploadedSize / video.fileSize) * 100);
+  }
+
+  getEstimateUploaded(video) {
+    const interval = _.now() - +new Date(video.uploadedAt);
+    return new Date(_.now() + Math.round((video.fileSize / video.uploadedSize) * interval));
+  }
 }
 
 
