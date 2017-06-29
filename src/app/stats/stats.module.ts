@@ -4,18 +4,18 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { StatsComponent } from './stats.component';
 import { FilterPipe } from './stats.filter.pipe';
-import { MomentModule } from 'angular2-moment';
+import { CountdownPipe } from './countdown.pipe';
 
 @NgModule({
   declarations: [
     StatsComponent,
-    FilterPipe
+    FilterPipe,
+    CountdownPipe
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule,
-    MomentModule
+    FormsModule
   ],
   exports: [
     StatsComponent
