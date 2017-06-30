@@ -5,7 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import * as Nes from 'nes';
-
+import { environment as config } from '../../environments/environment';
 
 // Appel des routes de l'API
 @Injectable()
@@ -15,7 +15,7 @@ export class StatsService {
   eventCallback$ = this.eventCallback.asObservable(); // Creation d'une instance Observable
 
   constructor(private http: Http) {
-    var client = new Nes.Client('ws://localhost:8086'); // Création de la Websocket
+    var client = new Nes.Client(config.server.url); // Création de la Websocket
     client.connect((err) => {
       if (err) {
         return console.error(`ERROR during websocket connection: ${err}`);

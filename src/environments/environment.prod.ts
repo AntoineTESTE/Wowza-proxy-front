@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  server: {
+    url: 'ws://videomaster.livee.com/proxy/'
+  }
 };
