@@ -1,26 +1,30 @@
-<div class="searcharea">
-  <input class="form-control w-25 btn btn-secondary" onfocus="this.placeholder=''" onblur="this.placeholder='Search by name'"
-    type="text" [(ngModel)]="query" placeholder="search by name" />
+<div class="container-fluid">
+  <div class="searcharea">
+    <input class="form-control btn" onfocus="this.placeholder=''" onblur="this.placeholder='Search by name'" type="text" [(ngModel)]="query"
+      placeholder="search by name" />
+  </div>
+
+
+  <table class="table table-striped table-bordered table-hover table-sm">
+    <thead class="thead-inverse">
+      <tr>
+        <th class="Name">Nom</th>
+        <th class="Time">Heure d'upload<button class="order btn btn-secondary" (click)="sortByDate()">&#8597;</button>
+        </th>
+        <th class="Duration">Durée d'upload</th>
+        <th class="State">Etat</th>
+        <th class="Remain">Restant</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stat of stats| filter:query">
+        <td><a href="{{stat.url}}">{{stat.name}}</a></td>
+        <td>{{stat.uploadedAt | date:'dd/MM/y H:mm:ss'}}</td>
+        <td>{{stat.uploadDuration | countdown: 'milliseconds' }}</td>
+        <td [ngStyle]="progressColor(stat.progress)">{{ stat.progress }}%</td>
+        <td *ngIf="stat.status === 'UPLOADED'">-</td>
+        <td *ngIf="stat.status !== 'UPLOADED'">{{ stat.remain | countdown: 'milliseconds' }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
-<table class="table table-striped table-bordered table-hover table-sm">
-  <thead class="thead-inverse">
-    <tr>
-      <th class="Name">Nom</th>
-      <th class="Time">Heure d'upload<button class="order btn btn-secondary" (click)="sortByDate()">&#8597;</button>
-      </th>
-      <th class="Duration">Durée d'upload</th>
-      <th class="State">Etat</th>
-      <th class="Remain">Restant</th>
-    </tr>
-  </thead>
-
-  <tr *ngFor="let stat of stats| filter:query">
-    <td><a href="{{stat.url}}">{{stat.name}}</a></td>
-    <td>{{stat.uploadedAt | date:'dd/MM/y H:mm:ss'}}</td>
-    <td>{{ stat.uploadDuration | countdown: 'milliseconds' }}</td>
-    <td [ngStyle]="progressColor(stat.progress)">{{ stat.progress }}%</td>
-    <td *ngIf="stat.status === 'UPLOADED'">-</td>
-    <td *ngIf="stat.status !== 'UPLOADED'">{{ stat.remain | countdown: 'milliseconds' }}</td>
-  </tr>
-</table>

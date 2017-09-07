@@ -39,6 +39,12 @@ td {
 .searcharea {
   margin: 20px;
   color: blue;
+
+}
+
+.searcharea input {
+  width: 40%;
+border-color: blue;
 }
 
 .order {
@@ -59,4 +65,13 @@ td {
 .calculating {
     font-weight: bold;
 }
+
+
+
+
+@media (max-width : 768px) {
+.searcharea input {width: 100%;  
+}
+}
+
 
